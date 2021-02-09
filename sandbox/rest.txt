@@ -1,0 +1,27 @@
+REST - стиль бэкенда, следит за теми ресурсами которые запрашиваются
+
+REST 
+API ===  WEB-сервис
+
+
+
+CRUD
+C - create - POST
+R - read - GET
+U - update - PUT, PATCH
+D - delete - DELETE
+
+{
+    "userId": 1,
+    "id": 1,
+    "title": "hello world",
+    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+  },
+
+
+HTTP статусы
+100 - информационные
+200 - успех  200, 201
+300 - редиректы 303
+400 - ошибки клиента 403, 404
+500 - ошибки сервера 500
