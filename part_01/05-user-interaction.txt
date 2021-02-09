@@ -1,0 +1,7 @@
+// console.log('Test');
+
+// alert('Hello');
+// let ansver = prompt();
+// console.log(ansver);
+// let ansver = confirm('Age');
+// console.log(ansver);

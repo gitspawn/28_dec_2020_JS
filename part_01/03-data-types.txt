@@ -1,0 +1,94 @@
+// Comments
+
+// ES6 ecma script 6
+// ecma script 2015
+
+// alert('test');
+
+/*
+vjnvm,xcvnc,xmvnx,vbnc,
+vjnvm,xcvnc,xmvnx,vbnc,
+vjnvm,xcvnc,xmvnx,vbnc,
+*/
+
+// Variable
+// var let const
+// var user = 'Vova'; // old school
+
+// let total = 500;
+// // total = 'Vova';
+
+// console.log('Hello world');
+// console.log(total);
+
+// const IP;
+// IP = '111.111.11.11'
+// const IP = '192.168.1.205';
+// console.log(IP);
+
+// let, const
+
+// Data types
+// Sring, Number, Boolean, null, undefined, Sumbol, Object, BigInt
+// Object - ссылочный тип
+// - примитив
+
+// String
+// let userName = 'Vova';
+// let message = "Hello Admin";
+// let car = `BMW`;
+
+// '', "", ``
+
+// Number
+// let total = 500;
+// let sum = 23000.45;
+
+// Boolean
+// true, false, 1, 0, yes, no
+// true
+// false
+
+// let isLogin = true;
+// let isGuest = false
+// console.log(isLogin)
+// console.log(false)
+
+// Undefined
+// let user = 'Vova';
+// console.log(car);
+// console.log(user);
+
+// Null
+// let dbConnection = null
+// let user = 'Vova';
+// user = null;
+// console.log(user);
+
+// Symbol
+// let myId = Symbol('id')
+
+// BigInt
+// 2*10 ^53
+// 2*10 ^-53
+// let big = 43524362565466546565262546254623623n;
+
+// Object
+// let user = { name: 'Sara', age: 20 };
+// let arr = ['aple', 'pear', 'orange'];
+// function myName() { }
+// console.log(myName());
+
+// let val = 'hello world';
+// val = 500;
+// val = 50053654666546n;
+// val = true;
+// val = undefined;
+// val = null; // object
+// val = Symbol('id');
+// val = { name: 'Sara', age: 20 };
+// val = ['aple', 'pear', 'orange'];
+
+// let user = { name: 'Sara', age: 30 }
+// let statusCode = 403;
+// val = ['Vova', 500, false, statusCode, null, undefined, ['aple', 'pear', 'orange'], { name: 'Sara', age: 30 }, user, ''];

@@ -1,0 +1,85 @@
+// Strings
+
+const firstName = 'Willimsons';
+const lastName = 'Johnson';
+const age = 30;
+let val;
+
+val = firstName + ' ' + lastName;
+
+// Append
+val = 'John ';
+val += 'Doe ';
+val += 'JavaScript';
+
+//////////////////////////
+val = 'Hello' + ' ' + firstName + ' ' + lastName + ', ' + 'I am ' + age + ' old';
+
+// Escaping
+val = "Theat's awsome, I can't weit";  // \t, \n, \s
+
+
+// Lenghts
+val = firstName.length;
+
+
+// Concat
+val = firstName.concat('###', lastName);
+
+
+// Cange Case
+// val = firstName.toLowerCase();
+// val = firstName.toUpperCase();
+val = firstName[0];
+val = firstName[2];
+
+
+// indexOf()
+val = firstName.indexOf('W'); // 0
+val = firstName.indexOf('n');
+val = firstName.lastIndexOf('l'); // 3 (last entrance)
+
+
+// charAt()
+val = firstName.charAt(0);
+val = firstName.charAt(2);
+
+
+// Get last Char
+val = firstName.charAt(firstName.length - 1);
+
+
+// Substrings  'Willimsons'
+val = firstName.substring(0, 4); // Will
+val = firstName.substring(0, 6); // Willim
+val = firstName.substring(2, 6); // llim
+val = firstName.substring(3, 7); // lims
+
+
+// Slice
+val = firstName.slice(1, 4) // ill
+val = firstName.slice(0, 4) // Will
+val = firstName.slice(-3) // ons  
+
+
+// split
+let str = 'Hello there my name is Vova';
+let web = 'web devrlopment, web programing, web tools';
+
+
+val = str.split(' ');  // String to array
+val = web.split(',');
+// let arr = str.split(' ');
+// for (let i in arr) { console.log(i + ':' + arr[i]); }
+
+
+// replace
+val = str.replace('Vova', 'John'); // Replaces 'Vova' to 'John'
+
+
+// includes
+val = str.includes('hello'); // false
+val = str.includes('Hello'); // true (case sencitive)
+
+
+console.log(val);

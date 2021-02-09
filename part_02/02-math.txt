@@ -1,0 +1,50 @@
+// Numbers
+const num1 = 100;
+const num2 = 50;
+let val;
+
+
+// basic math
+val = num1 + num2;
+val = num1 - num2;
+val = num1 / num2;
+val = num1 * num2;
+val = num1 % num2;
+
+
+// Object Math
+val = Math.PI;
+val = Math.round(2.8) // 3
+val = Math.round(2.4) // 2
+val = Math.ceil(2.2) // 3 rounding up
+val = Math.floor(2.8) // 2 rounding down 
+val = Math.sqrt(64) // 8 
+val = Math.abs(-5) // 5 absolute value
+val = Math.pow(8, 2) // 64
+val = Math.min(10, 2, 4) // 2
+val = Math.max(10, 2, 4) // 10
+val = Math.random(); // 0.3234234234234
+val = Math.random() * 20 + 1; // 13.4354534543543534
+val = Math.floor(Math.random() * 20 + 1); // 13
+
+// let str = 'abcdefg';
+// let arr = [10, 2, 4];
+
+// val = Math.min.apply(Math, arr);
+// val = Math.min.apply(this, arr);
+// val = Math.max.apply(String, arr);
+
+
+
+// console.log(0.1 + 0.2 == 0.3); // false // 0.30000000000000004
+// Binary system
+// 0.1 => 1/10
+// 0.2 => 1/20 0.33333(3)
+let sum = 0.1 + 0.2;
+// sum.toFixed();
+
+
+
+
+
+// console.log(val)
