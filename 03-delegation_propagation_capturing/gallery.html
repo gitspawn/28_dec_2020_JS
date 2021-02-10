@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Gallery</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <style>
+      .gallery {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .gallery li {
+        margin-right: 4px;
+        margin-left: 4px;
+      }
+
+      .js-large-image{
+        margin-top: 5%;
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Gallery</h1>
+
+    <ul class="gallery js-gallery">
+      <li class="gallery__item">
+        <a
+          class="gallery__link"
+          href="https://pixabay.com/get/g40ad211fceac4eed39e63c18d9aa8a9068248704eb161d6fb42981b2ab441f2959d9ffa77f749fdaea5ae4b9aca9ca52ee6fb821a6630fd30b440c0aee0f0a27_1280.jpg"
+        >
+          <img
+            class="gallery__image"
+            src="https://pixabay.com/get/gd1d31d22fbac805d877e64f46c5e82e4e09d8d74e97560b570dc222da7d02b4338efe7ed8c02223f72f995d0f125df6102195d708910fc3dfff7229530f3a4fb_640.jpg"
+            data-source="https://pixabay.com/get/g40ad211fceac4eed39e63c18d9aa8a9068248704eb161d6fb42981b2ab441f2959d9ffa77f749fdaea5ae4b9aca9ca52ee6fb821a6630fd30b440c0aee0f0a27_1280.jpg"
+            alt="unflower, nature, flora"
+            width="320"
+          />
+        </a>
+      </li>
+      <li class="gallery__item">
+        <a
+          class="gallery__link"
+          href="https://pixabay.com/get/g2f8b041d88f54f974c82838cae414282c3bea48c908d05d32572c1ba12f6843e87f7d4a83e232b908bd2494c65bd4a301b0680ef0b8519b8bcc52e9f83cb4304_1280.jpg"
+        >
+          <img
+            class="gallery__image"
+            src="https://pixabay.com/get/gee8586c82668586cb630061a98a8122b0a8cc027e8ede8ece601642ce9fe8c8adef33f5f6c9d1cfd65b7afd382f81e443976cf9dc24a4ffd09317204af0969c9_640.jpg"
+            data-source="https://pixabay.com/get/g2f8b041d88f54f974c82838cae414282c3bea48c908d05d32572c1ba12f6843e87f7d4a83e232b908bd2494c65bd4a301b0680ef0b8519b8bcc52e9f83cb4304_1280.jpg"
+            alt="spring bird, bird, tit"
+            width="320"
+          />
+        </a>
+      </li>
+      <li class="gallery__item">
+        <a
+          class="gallery__link"
+          href="https://pixabay.com/get/g3849ee858bcf45e574db0b0019954e35137257013d991839f426106b2d67ea2c75ab23f0351bfc652a19100cc17d22cc72c443aa14a5cc3923b4dcff0588eb72_1280.jpg"
+        >
+          <img
+            class="gallery__image"
+            src="https://pixabay.com/get/ga54ed3df79abb634a3c9f8b3d193aceef75e3b9c54f46fca7d5872fcf5d3bfb26126bd9799695d120d0b24349ffde9b3_640.jpg"
+            data-source="https://pixabay.com/get/g3849ee858bcf45e574db0b0019954e35137257013d991839f426106b2d67ea2c75ab23f0351bfc652a19100cc17d22cc72c443aa14a5cc3923b4dcff0588eb72_1280.jpg"
+            alt="flower, rose, garden"
+            width="320"
+          />
+        </a>
+      </li>
+    </ul>
+
+
+    <img src="" alt="" class="js-large-image" />
+
+
+    <script src="./js/03-gallery.js" type="module"></script>
+  </body>
+</html>
