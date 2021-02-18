@@ -1,0 +1,19 @@
+{
+  "name": "express-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "devs": "nodemon server-static.js",
+    "deva": "nodemon server-api.js",
+    "devh": "nodemon server-handelbars.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
+    "uuid": "^8.3.2"
+  }
+}

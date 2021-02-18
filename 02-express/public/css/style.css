@@ -1,0 +1,9 @@
+body {
+  background-color: darkolivegreen;
+  color: white;
+}
+
+.active {
+  color: magenta;
+  font-weight: 600;
+}
