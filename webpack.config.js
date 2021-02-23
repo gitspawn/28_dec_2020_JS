@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -16,11 +17,29 @@ module.exports = {
   module: {
     rules: [
       { test: /\.txt$/, use: "raw-loader" },
+=======
+let path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new MiniCssExtractPlugin({ filename: 'main.css' }),
+    new HtmlWebpackPlugin({ template: './src/index.html' })],
+  entry: './src/index.js',
+  output: {
+    path: path.join(__dirname, 'build'),
+    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+>>>>>>> 7536e6f910a012de42e149ddc29b71ed02985a3c
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+<<<<<<< HEAD
         },
 
         // options: {
@@ -30,13 +49,24 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader"],
+=======
+        }
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+>>>>>>> 7536e6f910a012de42e149ddc29b71ed02985a3c
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
           "style-loader",
+<<<<<<< HEAD
           // Exract css
+=======
+          // Estract css
+>>>>>>> 7536e6f910a012de42e149ddc29b71ed02985a3c
           MiniCssExtractPlugin.loader,
           // Translates CSS into CommonJS
           "css-loader",
@@ -44,6 +74,7 @@ module.exports = {
           "sass-loader",
         ],
       },
+<<<<<<< HEAD
     ],
   },
 
@@ -53,3 +84,16 @@ module.exports = {
   //   port: 9000,
   // },
 };
+=======
+
+    ]
+  },
+  devServer: {
+    open: true,
+    watchOptions: {
+      poll: true,
+      ignored: "/node_modules/",
+    },
+  },
+}
+>>>>>>> 7536e6f910a012de42e149ddc29b71ed02985a3c
