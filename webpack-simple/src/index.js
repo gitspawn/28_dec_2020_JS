@@ -1,10 +1,4 @@
-import menuTempalate from './templates/menu.hbs';
-import menuData from './js/menu-data';
-import refs from './js/refs';
-import './css/styles.scss'
+// import './js/pnotify';
+import success_export from './js/pnotify.js';
 
-
-
-let markup = menuTempalate(menuData);
-
-refs.root.innerHTML = markup
+success_export()
