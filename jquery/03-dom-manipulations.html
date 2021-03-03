@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    header {
+      background-color: darkcyan;
+      color: white;
+      padding: 10px;
+      color: white;
+      text-align: center;
+    }
+
+    #container {
+      width: 85%;
+      margin: auto;
+      padding: 5px;
+    }
+
+    img {
+      display: block;
+      width: 300px;
+      height: auto;
+    }
+
+    .btn-myButton {
+      color: darkgreen;
+      background-color: darkolivegreen;
+    }
+
+    .myClass {
+      color: white;
+      background-color: darkolivegreen;
+    }
+  </style>
+</head>
+
+<body>
+  <header>Jquery DOM</header>
+  <button id="btn1" class="btn">Button_01</button>
+  <h1 class="heading1">Heading 1</h1>
+  <p class="paragraph1">
+    jQuery is a fast, small, and feature-rich JavaScript library. It makes
+    things like <span>HTML document traversal and manipulation</span>, event
+    handling, animation, and Ajax much simpler with an easy-to-use API that
+    works across a multitude of browsers.
+  </p>
+  <h1 class="heading2">Heading 2</h1>
+  <p class="paragraph2">
+    Aside from the change to no longer ensure XHTML-compliant tags for you,
+    we do not expect other compatibility issues when upgrading from a
+    <span>jQuery 3.0+ version</span>. To upgrade, have a look at the new 3.5
+    Upgrade Guide. If you haven’t yet upgraded to jQuery 3+, first have a
+    look at the 3.0 Upgrade Guide.
+  </p>
+
+  <div id="myDiv">
+    Hello world!!!
+  </div>
+
+  <input type="text" name="" id="newListItem">
+  <ul id="list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+  </ul>
+  <hr>
+
+  <ul id="users"></ul>
+  <a href="https://google.com">Google</a>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      // $('p.paragraph1').css('color', 'red')
+      // $('p.paragraph1').css({color: 'green', fontWeight: 600})
+
+      // $('p.paragraph2').addClass('myClass')
+      // $('p.paragraph2').removeClass('myClass')
+
+
+      // $('#btn1').click(function(arguments) {
+      //   $('p.paragraph2').toggleClass('myClass')
+      // })
+
+      // console.log($('#myDiv').text())
+      // $('#myDiv').text('Pizza')
+      // $('#myDiv').html('<h1>Kebab</h1>')
+
+
+      // Append
+      // $('ul#list').append('<li>Append listItem </li>')
+      // $('ul#list').prepend('<li>Prepend listItem </li>')
+      // $('.paragraph1').appendTo('header')
+      // $('.paragraph2').prependTo('header')
+      // $('.paragraph1').appendTo('.paragraph2')
+      //  $('ul#list').before('<h1>Heading before UL</h1>')
+      //   $('ul#list').after('<h1>Heading after UL</h1>')
+
+
+      // Remove elements
+      // $('ul#list').empty()
+      // $('ul#list').detach()
+
+
+      // Atributes
+      // $('a').attr('target', '_blank')
+      // console.log($('a').attr('href'))
+      // $('a').removeAttr('target')
+
+      // Wrap
+      // $('p').wrap('<h3>')
+      // $('p').wrapAll('<h3>')
+
+      // Add to list
+      $('#newListItem').keypress(function (event) {
+        let code = event.which;
+        if (code === 13) {
+          event.preventDefault()
+          $('ul#list').append(`<li>${event.target.value}</li>`)
+        }
+      })
+
+      // Array
+      let myArr = ['Vova', 'Sara', 'Bob', 'Mike', 'Sveta'];
+      $.each(myArr, function (index, elem) {
+        // console.log(elem)
+        $('#users').append(`<li>${elem}</li>`)
+      })
+
+      let newArr = $('ul#list li').toArray()
+      // console.log(newArr)
+
+      $.each(newArr, function (index, elem) {
+        console.log(elem.innerHTML)
+      })
+    });
+
+
+    // XMLHttpRequest
+
+    $.get('text.txt', function (data) {
+      $('selector').html(data)
+    })
+
+    $.ajax({
+      method: 'GET',
+      url: "https://jsonplaceholder.typicode.com/users",
+      dataType: 'json',
+    }).done(function (data) {
+      $.map(data, function (get, i) {
+        $('selector').append(<li>${get.body}</li>)
+      })
+    })
+
+
+    $.ajax({
+      url: "test.html",
+      context: document.body
+    }).done(function () {
+      $(this).addClass("done");
+    });
+  </script>
+</body>
+
+</html>
