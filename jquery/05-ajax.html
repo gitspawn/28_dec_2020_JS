@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Ajax</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <ul id="users"></ul>
+
+    <h3>Add user form</h3>
+    <form id="postForm" action="https://jsonplaceholder.typicode.com/users">
+      <input type="text" name="name" placeholder="User name" />
+      <br />
+      <input type="tel" name="phone" placeholder="Phone number" />
+      <br />
+      <input type="submit" value="Send user info" />
+    </form>
+
+    <script>
+      // LOAD
+      $(document).ready(function () {
+        /*
+        // $('#root').load('text.txt');
+        $('#root').load('text.txt', function (response, status, xhr) {
+          if (status === 'success') {
+            alert('OK. Done!');
+          }
+          if (status === 'error') {
+            console.log(xhr.statusText);
+          }
+        });
+        */
+
+        //GET
+        $.get('text.txt', function (response, status, xhr) {
+          $('#root').html(response);
+        });
+
+        // Get Json
+        /*
+        $.getJSON('users.json', function (response, status, xhr) {
+          $.each(response, function (index, user) {
+            $('ul#users').append(
+              '<li>' +
+                'Name:' +
+                user.userName +
+                ' ' +
+                'Age:' +
+                user.userAge +
+                '</li>'
+            );
+          });
+        });
+        */
+
+        // AJAX GET
+        /*
+        const extURL = 'https://jsonplaceholder.typicode.com/users';
+        $.ajax({
+          method: 'GET',
+          url: extURL,
+          dataType: 'json',
+        }).done(function (response) {
+          $.map(response, function (user, index) {
+            console.log(user);
+            // name: "Leanne Graham"
+            // phone: "1-770-736-8031 x56442"
+
+            $('#root').append(
+              '<h2>' +
+                user.name +
+                '</h2>' +
+                '<p>' +
+                user.phone +
+                '</p>' +
+                '<hr>'
+            );
+          });
+        });
+
+        */
+
+        // AJSX POST
+        /*
+        $('#postForm').submit(function (event) {
+          event.preventDefault();
+          let form = event.currentTarget;
+
+          // console.log(form.elements);
+
+          let nameValue = form.elements.name.value;
+          let phoneValue = form.elements.phone.value;
+          let url = $(form).attr('action');
+          console.log(url);
+
+          let dataToSend = { name: nameValue, phone: phoneValue };
+          $.post(url, dataToSend).done(function (data) {
+            console.log(data);
+          });
+        });
+
+        */
+      });
+
+      // Map vs Each
+      // $.map(response, function (user, index) {});
+      // $.each(response, function (index, user) {}
+    </script>
+  </body>
+</html>
