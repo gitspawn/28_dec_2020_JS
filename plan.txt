@@ -1,14 +1,12 @@
-Асинхронный JavaScript
-Цикл событий
-Класс Date
-Промисы
+Повторить:
+- Протоколы передачи данных 
+- URL, URN, URI
+- Status codes
+- Headers
 
-Статические методы промисов:
-  - Promise.all()
-  - Promise.race()
+- REST API
+- AJAX и Fetch API
+- CORS (Кроссдоменные запросы) https://www.youtube.com/watch?v=stvCHJZq5MI&ab_channel=WebDevTV
 
-
-Promise.resolve(), Promise.reject() и Promise.finally()
-Вызов статического метода Promise.resolve(value) создаёт успешно выполнившийся промис с результатом value. Это аналогично new Promise((resolve) => resolve(value)), только короче. Этот метод используют, когда хотят построить асинхронную цепочку и начальный результат уже есть.
-
-Это можно использовать для того, чтобы заменить callback на цепочку промисов. То есть вместо, того чтобы передавать callback в функцию и надеяться на лучшее, получаем промис и чейним then, в котором доступен результат работы функции.
+- Mime-types
+https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_MIME-%D1%82%D0%B8%D0%BF%D0%BE%D0%B2 
