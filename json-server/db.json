@@ -1,0 +1,18 @@
+{
+  "posts": [
+    { "title": "Ukrainian news" },
+    { "title": "German news" },
+    { "title": "USA news" }
+  ],
+  "comments": [
+    { "title": "Good news" },
+    { "title": "Bad news" },
+    { "title": "Exelent news" }
+  ],
+  "users": [
+    { "name": "Vova", "email": "vova@i.ua" },
+    { "name": "Sara", "email": "sara@i.ua" },
+    { "name": "Boba", "email": "boba@i.ua" },
+    { "name": "Mike", "email": "mike@i.ua" }
+  ]
+}

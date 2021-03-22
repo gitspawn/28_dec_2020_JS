@@ -58,23 +58,44 @@ class News {
   }
 
 
-  fetchNews = () => {
-    let url = this.url + this.counter;
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
+  fetchNews = async () => {
+    try {
+      let url = this.url + this.counter;
 
-        if (data.response.status === 'ok') {
-          this.renderNews(data.response.results)
-          this.renderPagination(data.response)
-        } else {
-          renderErrorMassage('Response Err')
-        }
-      })
-      // .catch(err => this.renderErrorMassage(err))
-      .catch(this.renderErrorMassage)
+      let res = await fetch(url);
+      let data = await res.json();
+
+      if (data.response.status === 'ok') {
+        this.renderNews(data.response.results)
+        this.renderPagination(data.response)
+      } else {
+        renderErrorMassage('Response Err')
+      }
+
+    } catch (error) {
+      this.renderErrorMassage(error)
+    }
   }
+
+
+
+  // fetchNews = () => {
+  //   let url = this.url + this.counter;
+  //   fetch(url)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log(data)
+
+  //       if (data.response.status === 'ok') {
+  //         this.renderNews(data.response.results)
+  //         this.renderPagination(data.response)
+  //       } else {
+  //         renderErrorMassage('Response Err')
+  //       }
+  //     })
+  //     // .catch(err => this.renderErrorMassage(err))
+  //     .catch(this.renderErrorMassage)
+  // }
 
   renderErrorMassage = (err) => {
     document.body.innerHTML = '';
@@ -116,6 +137,7 @@ class News {
 
 
   init = () => {
+    // window.addEventListener('load', this.fetchNews.bind(this))
     window.addEventListener('load', this.fetchNews)
     this.addListeners()
   }
