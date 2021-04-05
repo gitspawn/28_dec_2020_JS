@@ -1,0 +1,4 @@
+:global(.main-container) {
+  width: 100%;
+  background-color: green;
+}

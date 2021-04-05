@@ -1,0 +1,24 @@
+.Product {
+  background-color: lightblue;
+}
+
+.Product__name {
+  font-weight: 600;
+  color: darkolivegreen;
+}
+
+.Product__qty {
+  font-weight: 600;
+}
+
+.Product__qty.awailable {
+  color: coral;
+  font-weight: 600;
+}
+
+.Product__qty.not-awailable {
+  color: red;
+  font-weight: 400;
+}
+
+/* <div class="Product__qty not-awailable"> */

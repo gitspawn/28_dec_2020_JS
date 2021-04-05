@@ -1,0 +1,6 @@
+[
+  { "id": "id-1", "name": "React" },
+  { "id": "id-2", "name": "Angular" },
+  { "id": "id-3", "name": "Vue" },
+  { "id": "id-4", "name": "PHP" }
+]

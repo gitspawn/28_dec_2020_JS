@@ -1,0 +1,46 @@
+@value red-color from '../../variables.module.css';
+@value green-color from '../../variables.module.css';
+
+.container {
+  background-color: lightblue;
+}
+
+.name {
+  font-weight: 600;
+  color: darkolivegreen;
+}
+
+/* .qty {
+  font-weight: 600;
+}
+
+.awailable {
+  color: green;
+  font-weight: 600;
+}
+
+.not-awailable {
+  color: red;
+  font-weight: 400;
+} */
+
+/* .notAwailable {
+  color: red;
+  font-weight: 400;
+} */
+
+/* ================== */
+/* Композиция */
+.qty {
+  font-weight: 600;
+}
+
+.awailable {
+  composes: qty;
+  color: green-color;
+}
+
+.not-awailable {
+  composes: qty;
+  color: red-color;
+}
