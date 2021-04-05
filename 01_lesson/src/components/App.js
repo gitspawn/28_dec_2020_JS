@@ -1,10 +1,8 @@
-import React from 'react'
-import Product from './Product'
-import Section from './Section'
-import BookList from './BookList'
-import favoriteBooks from '../books.json';
-
-
+import React from "react";
+import Product from "./Product";
+import Section from "./Section";
+import BookList from "./BookList";
+import favoriteBooks from "../books.json";
 
 // let favoriteBooks = [
 //   { id: 'id-1', name: 'React' },
@@ -27,7 +25,6 @@ let App = () => {
   //   </>
   // )
 
-
   // Collections
   return (
     <>
@@ -43,7 +40,7 @@ let App = () => {
       </ul> */}
       <BookList books={favoriteBooks} />
     </>
-  )
-}
+  );
+};
 
 export default App;
