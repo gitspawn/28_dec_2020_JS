@@ -22,14 +22,13 @@
   margin-right: 16px;
   border-radius: 3px;
 }
-
-.TaskList-actions {
+TaskList-button .TaskList-actions {
   display: flex;
   justify-content: center;
   flex-grow: 1;
 }
 
-.TaskList-button {
+. {
   margin-right: 4px;
   margin-left: 4px;
 }
