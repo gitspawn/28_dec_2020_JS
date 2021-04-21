@@ -1,19 +1,28 @@
-import React from "react";
+import React from 'react'
+import imagePath from '../assets/pusheen.jpg'
+import {Link } from 'react-router-dom'
 
-const styles = {
+
+let styles = {
   container: {
-    textAlign: "center",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  status: { fontSize: 96, marginBottom: 16 },
-};
+  status: {
+    fontSize: 46,
+  }
+}
 
-const NotFound = () => (
-  <div style={styles.container}>
-    <h1 style={styles.status}>404</h1>
-  </div>
-);
-
-export default NotFound;
+export default function NotFound() {
+  return (
+    <div style={styles.container}>
+     <h1 style={styles.status}>404</h1>
+     {console.log(imagePath)}
+     <img src={imagePath} alt='404 page' width="400"/>
+     <p>Такой страницы не существует. Вернуться {<Link to='/'> на главную</Link>}</p>
+    </div>
+  )
+}
