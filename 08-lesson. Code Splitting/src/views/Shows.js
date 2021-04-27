@@ -1,34 +1,11 @@
-// //  Вложенная навигация
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Navigation from '../components/Navigation'
+import Searchbox from '../components/Searchbox'
 import tvAPI from '../services/tv-api.js'
+// import queryString from 'query-string';
+import getQueryParams from '../utils/getQueryParams';
 
 
-// const Shows = ({ match }) => {
-//   const shows = [
-//     { id: "id-1", name: "Shows name 1" },
-//     { id: "id-2", name: "Shows name 2" },
-//     { id: "id-3", name: "Shows name 3" },
-//     { id: "id-4", name: "Shows name 4" },
-//   ];
-//   return (
-//     <>
-//       <Navigation/>
-//       {
-//         <ul>
-//           {
-//             shows.map((show) => {
-//               return (
-//                 <li key={shows.id}><Link to={`${match.url}/${show.id}`}>{show.name}</Link></li>
-//               )
-//             })
-//           }
-//         </ul>
-//       }
-//     </>
-//   );
-// };
 
 
 
@@ -37,11 +14,67 @@ class Shows extends Component {
     shows: []
   }
 
+  // componentDidMount(){
+
+  //   let {query} =  queryString.parse(this.props.location.search)
+
+  //   if (query) {
+  //     console.log('Ecть query')
+  //     this.fetchShows(query)
+  //     return 
+  //   }
+
+  //   this.fetchShows('batman')
+  // }
+
+
+
   componentDidMount(){
-    tvAPI.fetchShowWithQuery('cat').then((shows) => {
+    let {query} = getQueryParams(this.props.location.search)
+    if (query) {
+      console.log('Ecть query')
+      this.fetchShows(query)
+      return 
+    }
+    this.fetchShows('batman')
+  }
+
+  // componentDidUpdate(prevProps, prevState){
+  //   // console.log(this.props)
+  //   // let params = queryString.parse(this.props.location.search)
+  //   // console.log(params)
+    
+  //   let  {query: prevQuery} = queryString.parse(prevProps.location.search)
+  //   let  {query: nextQuery} = queryString.parse(this.props.location.search)
+  //   if (prevQuery !== nextQuery){
+  //     this.fetchShows(nextQuery)
+  //   }
+  // }
+  
+  componentDidUpdate(prevProps, prevState){
+    let  {query: prevQuery} = getQueryParams(prevProps.location.search)
+    let  {query: nextQuery} = getQueryParams(this.props.location.search)
+    if (prevQuery !== nextQuery){
+      this.fetchShows(nextQuery)
+    }
+  }
+
+  fetchShows = (query)=>{
+    tvAPI.fetchShowWithQuery(query).then((shows) => {
       return this.setState({shows})
     })
   }
+
+handleChangeQuery = query =>  {
+  // console.log(query)
+  // this.props.history.push('/')
+  this.props.history.push({
+    pathname: this.props.location.pathname,
+    search: `query=${query}`
+  })
+}
+
+
 
     render () {
       let {match} = this.props
@@ -50,18 +83,21 @@ class Shows extends Component {
 
       return (
             <>
-              <Navigation/>
+            <Searchbox onSubmit = {this.handleChangeQuery}/>
               {
                 <ul>
                   {
                     shows.map((show) => {
                       return (
                         <li key={show.id}>
-                          
-                          <Link to={`${match.url}/${show.id}`}>
-                            {show.name}
-                            {/* <img src={show.image.medium}/> */}
-                            </Link>
+                          {/* <Link to={`${match.url}/${show.id}`}>
+                            {show.name}</Link> */}
+                             <Link to={{
+                               pathname: `${match.url}/${show.id}`,
+                              //  state: 'Я пришел со страницы Show'
+                               state: {from: this.props.location}
+                             }}>
+                            {show.name}</Link>
                           </li>
                       )
                     })
@@ -78,3 +114,7 @@ export default Shows;
 
 
 
+// to={{
+//   pathname: "/courses",
+//   state: { fromDashboard: true }
+// }}

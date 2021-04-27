@@ -1,4 +1,5 @@
 import React from "react";
+import Appbar from './Appbar'
 
 const styles = {
   maxWidth: 1170,
@@ -8,6 +9,10 @@ const styles = {
   paddingLeft: 12,
 };
 
-const Layout = ({ children }) => <div style={styles}>{children}</div>;
+const Layout = ({ children }) => <div style={styles}>
+  <Appbar/>
+  {children}
+  {/* <Footer/> */}
+  </div>;
 
 export default Layout;
