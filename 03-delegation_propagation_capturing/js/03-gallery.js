@@ -1,23 +1,23 @@
-let refs = {
-  gallery: document.querySelector('.js-gallery'),
-  largeImage: document.querySelector('.js-large-image'),
-}
+const refs = {
+  gallery: document.querySelector(".js-gallery"),
+  largeImage: document.querySelector(".js-large-image"),
+};
 
-
-refs.gallery.addEventListener('click', onGalleryClick)
-
+refs.gallery.addEventListener("click", onGalleryClick);
 
 function onGalleryClick(event) {
-  event.preventDefault()
-  // console.log(event.target)
+  event.preventDefault();
 
   if (event.target.nodeName !== "IMG") {
-    return
+    return;
   }
 
-  console.log('Click in to image')
-  let imageRef = event.target;
-  let largeImageURL = imageRef.dataset.source
+  const imageRef = event.target;
+  const largeImageURL = imageRef.dataset.source;
 
-  refs.largeImage.src = largeImageURL
+  setLargeImageSrc(largeImageURL);
+}
+
+function setLargeImageSrc(url) {
+  refs.largeImage.src = url;
 }
