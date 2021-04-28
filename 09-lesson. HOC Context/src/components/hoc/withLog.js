@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 
-const withLog = WrappedComponent => {
+ let withLog = (WrappedComponent) => {
   return class WithLog extends Component {
-    componentDidMount() {
-      console.group(`WithLog ouput @${WrappedComponent.name}`);
-      console.log(this.props);
-      console.groupEnd();
+    componentDidMount(){
+      console.log(WrappedComponent.name)
+      console.log(this.props)
     }
 
-    render() {
-      return <WrappedComponent {...this.props} />;
+    render () {
+      return <WrappedComponent {...this.props}/>
     }
-  };
-};
+  }
+}
 
-export default withLog;
+export default withLog

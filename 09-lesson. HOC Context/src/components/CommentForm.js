@@ -20,11 +20,12 @@ const styles = {
 
 class CommentForm extends Component {
   render() {
-    return (
+    return (<AuthContext.Consumer>
+      {({name})=>(
       <form style={styles.form}>
         <label style={styles.label}>
           <span style={styles.text}>Name</span>
-          <input type="text" style={styles.input} value={"User Name"} />
+          <input type="text" style={styles.input} value={name} />
         </label>
 
         <label style={styles.label}>
@@ -32,7 +33,8 @@ class CommentForm extends Component {
           <textarea style={styles.input} rows="10"></textarea>
         </label>
       </form>
-    );
+    )}
+    </AuthContext.Consumer>)
   }
 }
 

@@ -10,10 +10,21 @@ import routes from "../routes";
 // import userAPI from '../services/user-api';
 import AuthContext from "../contexts/Auth";
 
+
+
+
+let user = {
+  name: 'Vova',
+  email: 'vova@i.ua',
+  avatar: 'https://icon-library.net/images/avatar-icon-images/avatar-icon-images-7.jpg'
+}
+
+
 export default class App extends Component {
   render() {
     return (
-      <Layout>
+      <AuthContext.Provider value={user}>
+    <Layout>
         <Switch>
           <Route path={routes.home} exact component={Home} />
           <Route path={routes.blog} exact component={Blog} />
@@ -22,24 +33,9 @@ export default class App extends Component {
           <Route component={NotFound} />
         </Switch>
       </Layout>
+      </AuthContext.Provider>
+  
     );
   }
 }
 
-// export default class App extends Component {
-//   render() {
-//     return (
-//       <AuthContext>
-//         <Layout>
-//           <Switch>
-//             <Route path={routes.home} exact component={Home} />
-//             <Route path={routes.blog} exact component={Blog} />
-//             <Route path={routes.profile} component={Profile} />
-//             <Route path={routes.patterns} component={Patterns} />
-//             <Route component={NotFound} />
-//           </Switch>
-//         </Layout>
-//       </AuthContext.Provider>
-//     );
-//   }
-// }
