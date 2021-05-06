@@ -1,3 +1,5 @@
+// const [state, dispatch] = useReducer(reducer, initialArg, init);
+
 import React, { useState, useReducer, useMemo } from 'react';
 import { LoremIpsum } from 'lorem-ipsum';
 import shortid from 'shortid';
@@ -5,63 +7,56 @@ import shortid from 'shortid';
 const lorem = new LoremIpsum();
 
 
-// const [state, dispatch] = useReducer(reducer, initialArg, init);
-
-
-let todoReducer = (state, action) => {
-  switch(action.type) {
-    case 'addTodo': 
-    return [state, action.payload.todo];
+// Редьюсер
+const todosReducer = (state, action) => {
+  switch (action.type) {
+    case 'addTodo':
+      return [...state, action.payload.todo];
 
     case 'removeTodo':
-      return state.filter(todo => todo.id !== action.payload.todo)
+      return state.filter(todo => todo.id !== action.payload.todoId);
+
+    default:
+      return state;
   }
-}
+};
 
-const Todos = () => {
-  let [todos, dispatch] = useReducer(todoReducer, [])
+export default function Todos() {
+  const [todos, dispatch] = useReducer(todosReducer, []);
 
-
-  let addTodo = ()=>{
+  const addTodo = () => {
     const todo = {
       id: shortid.generate(),
       text: lorem.generateWords(3),
-      };
+    };
+    dispatch({ type: 'addTodo', payload: { todo } });
+  };
 
-      dispatch({type: 'addTodo', payload: {todo}})
-  }
+  const removeTodo = todoId => {
+    dispatch({ type: 'removeTodo', payload: { todoId } });
+  };
 
+  const [filter, setFilter] = useState('');
 
-  let [filter, setFilter] = useState('')
-  let changeFilter = (event)=>{
-    setFilter(event.target.value)
-  }
+  const changeFilter = e => {
+    setFilter(e.target.value);
+  };
 
-  let filteredTodos = useMemo(()=>{
-    let data = todos.filter(todo => todo.text.includes(filter))
-    console.log(data)
-    return data
-  }, [todos, filter])
+  const filteredTodos = useMemo(() => {
+    console.log('Computing filtered todos');
+    return todos.filter(todo => todo.text.includes(filter));
+  }, [todos, filter]);
 
-let removeTodo = todoId =>{
-  dispatch({type: 'removeTodo', payload: {todoId}}) 
-}
-
+  const [text, setText] = useState('');
   return (
     <>
-      <input
-        type="text"
-        onChange={changeFilter}
-        value={filter}
-      />
-
+      <input type="text" onChange={e => setText(e.target.value)} value={text} />
+      <p>{text}</p>
+      <input type="text" onChange={changeFilter} value={filter} />
       <br />
       <button onClick={addTodo}>Add todo</button>
-    
-
-
       <ul>
-        {filteredTodos.map((todo) => (
+        {filteredTodos.map(todo => (
           <li key={todo.id}>
             <span>{todo.text}</span>
             <button onClick={() => removeTodo(todo.id)}>Remove</button>
@@ -70,27 +65,24 @@ let removeTodo = todoId =>{
       </ul>
     </>
   );
-
 }
 
 
-
-
+//  Без редюсера
 // const Todos = () => {
-//   let [todos, setTodos] = useState([])
 
+//   let [todos, setTodos] = useState([])
 
 //   let addTodo = ()=>{
 //     const todo = {
 //       id: shortid.generate(),
 //       text: lorem.generateWords(3),
 //       };
-
 //       setTodos(prevTodos => [...todos, todo])
 //   }
 
-
 //   let [filter, setFilter] = useState('')
+
 //   let changeFilter = (event)=>{
 //     setFilter(event.target.value)
 //   }
@@ -115,9 +107,6 @@ let removeTodo = todoId =>{
 
 //       <br />
 //       <button onClick={addTodo}>Add todo</button>
-    
-
-
 //       <ul>
 //         {filteredTodos.map((todo) => (
 //           <li key={todo.id}>
@@ -128,12 +117,11 @@ let removeTodo = todoId =>{
 //       </ul>
 //     </>
 //   );
-
 // }
+// export default Todos
 
 
-export default Todos
-
+// Компонент класс
 // export default class Todos extends Component {
 //   state = {
 //     todos: [],
