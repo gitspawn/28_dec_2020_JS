@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import authContext from './context/auth/authContext';
 
-export default function Profile() {
-  const auth = useContext(authContext);
+
+
+let Profile = () => {
+
+  let auth = useContext(authContext)
 
   return (
     <div>
@@ -20,7 +23,10 @@ export default function Profile() {
       )}
     </div>
   );
-}
+};
+
+export default Profile;
+
 
 // const withAuthContext = WrappedComponent => {
 //   return function WithAuthContext(props) {

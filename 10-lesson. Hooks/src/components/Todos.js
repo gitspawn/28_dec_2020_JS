@@ -4,59 +4,64 @@ import shortid from 'shortid';
 
 const lorem = new LoremIpsum();
 
-const todosReducer = (state, action) => {
-  switch (action.type) {
-    case 'addTodo':
-      return [...state, action.payload.todo];
+
+// const [state, dispatch] = useReducer(reducer, initialArg, init);
+
+
+let todoReducer = (state, action) => {
+  switch(action.type) {
+    case 'addTodo': 
+    return [state, action.payload.todo];
 
     case 'removeTodo':
-      return state.filter(todo => todo.id !== action.payload.todoId);
-
-    default:
-      return state;
+      return state.filter(todo => todo.id !== action.payload.todo)
   }
-};
+}
 
-export default function Todos() {
-  const [todos, dispatch] = useReducer(todosReducer, []);
+const Todos = () => {
+  let [todos, dispatch] = useReducer(todoReducer, [])
 
-  const addTodo = () => {
+
+  let addTodo = ()=>{
     const todo = {
       id: shortid.generate(),
       text: lorem.generateWords(3),
-    };
+      };
 
-    dispatch({ type: 'addTodo', payload: { todo } });
-  };
+      dispatch({type: 'addTodo', payload: {todo}})
+  }
 
-  const removeTodo = todoId => {
-    dispatch({ type: 'removeTodo', payload: { todoId } });
-  };
 
-  const [filter, setFilter] = useState('');
+  let [filter, setFilter] = useState('')
+  let changeFilter = (event)=>{
+    setFilter(event.target.value)
+  }
 
-  const changeFilter = evt => {
-    setFilter(evt.target.value);
-  };
+  let filteredTodos = useMemo(()=>{
+    let data = todos.filter(todo => todo.text.includes(filter))
+    console.log(data)
+    return data
+  }, [todos, filter])
 
-  const filteredTodos = useMemo(() => {
-    console.log('Computing filtered todos');
-    return todos.filter(todo => todo.text.includes(filter));
-  }, [todos, filter]);
+let removeTodo = todoId =>{
+  dispatch({type: 'removeTodo', payload: {todoId}}) 
+}
 
-  const [text, setText] = useState('');
   return (
     <>
-      <input type="text" onChange={e => setText(e.target.value)} value={text} />
-      <p>{text}</p>
-
-      <input type="text" onChange={changeFilter} value={filter} />
+      <input
+        type="text"
+        onChange={changeFilter}
+        value={filter}
+      />
 
       <br />
       <button onClick={addTodo}>Add todo</button>
+    
+
 
       <ul>
-        {filteredTodos.map(todo => (
+        {filteredTodos.map((todo) => (
           <li key={todo.id}>
             <span>{todo.text}</span>
             <button onClick={() => removeTodo(todo.id)}>Remove</button>
@@ -65,7 +70,69 @@ export default function Todos() {
       </ul>
     </>
   );
+
 }
+
+
+
+
+// const Todos = () => {
+//   let [todos, setTodos] = useState([])
+
+
+//   let addTodo = ()=>{
+//     const todo = {
+//       id: shortid.generate(),
+//       text: lorem.generateWords(3),
+//       };
+
+//       setTodos(prevTodos => [...todos, todo])
+//   }
+
+
+//   let [filter, setFilter] = useState('')
+//   let changeFilter = (event)=>{
+//     setFilter(event.target.value)
+//   }
+
+//   let filteredTodos = useMemo(()=>{
+//     let data = todos.filter(todo => todo.text.includes(filter))
+//     console.log(data)
+//     return data
+//   }, [todos, filter])
+
+// let removeTodo = todoId =>{
+//   return setTodos(todos.filter(todo => todo.id !== todoId))
+// }
+
+//   return (
+//     <>
+//       <input
+//         type="text"
+//         onChange={changeFilter}
+//         value={filter}
+//       />
+
+//       <br />
+//       <button onClick={addTodo}>Add todo</button>
+    
+
+
+//       <ul>
+//         {filteredTodos.map((todo) => (
+//           <li key={todo.id}>
+//             <span>{todo.text}</span>
+//             <button onClick={() => removeTodo(todo.id)}>Remove</button>
+//           </li>
+//         ))}
+//       </ul>
+//     </>
+//   );
+
+// }
+
+
+export default Todos
 
 // export default class Todos extends Component {
 //   state = {

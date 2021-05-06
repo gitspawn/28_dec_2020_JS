@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function News() {
-  const [articles, setArticles] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+const News = () => {
+  let [articles, setArticles] = useState([]);
+  let [error, setError] = useState(null);
+  let [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
 
-    const fetchArticles = () => {
+    let fetchArticles = () => {
       return axios
-        .get("https://hn.algolia.com/api/v1/search?query=react")
+        .get('https://hn.algolia.com/api/v1/search?query=react')
         .then(({ data }) => setArticles(data.hits))
         .catch((error) => setError(error))
         .finally(() => setLoading(false));
     };
 
     fetchArticles();
-
-    return () => {
-      // сделать отмену http-запроса чтобы небыло утечки памяти при unmount
-    };
+    
+    return () => {    
+      // написать ф-цию отмены http запроса
+    }
   }, []);
 
   return (
@@ -35,7 +35,10 @@ export default function News() {
       ))}
     </ul>
   );
-}
+};
+
+export default News;
+
 
 // Сменить раут пока не пришел http-ответ чтобы не была утечка памяти
 

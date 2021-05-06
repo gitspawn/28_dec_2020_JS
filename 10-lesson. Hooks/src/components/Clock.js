@@ -7,34 +7,37 @@ const styles = {
   },
 };
 
-export default function Clock() {
-  const [time, setTime] = useState(new Date());
 
-  const intervalId = useRef();
+
+let Clock = () => {
+  let [time, setTime] = useState(new Date());
+
+  const indervalId = useRef()
+
+  console.log(indervalId)
 
   useEffect(() => {
-    console.log('useEffect');
-    intervalId.current = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
+    console.log('useEffect')
+    indervalId.current = setInterval(() => {
+      setTime( new Date() );
+    }, 3000);
 
-    return () => {
-      console.log('clearing before next useEffect');
-      clearInterval(intervalId.current);
-    };
-  }, []);
-
-  const stop = () => {
-    clearInterval(intervalId.current);
-  };
+    return ()=>{
+      console.log('clear before next useEffect')
+      clearInterval(indervalId.current)
+    }
+  });
 
   return (
-    <div>
-      <p style={styles.clockface}>Current time: {time.toLocaleTimeString()}</p>
-      <button onClick={stop}>Stop</button>
-    </div>
+    <p style={styles.clockface}>
+      Current time: {time.toLocaleTimeString()}
+    </p>
   );
-}
+};
+
+export default Clock
+
+
 
 // export default class Clock extends Component {
 //   state = {
@@ -61,3 +64,15 @@ export default function Clock() {
 //     );
 //   }
 // }
+
+
+
+class User {
+  static age = 10
+
+  constructor(name){
+    this.name = name
+  }
+
+  getAge(){console.log(this.name)}
+}

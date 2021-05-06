@@ -5,7 +5,7 @@ export default class AuthProvider extends Component {
   state = {
     user: null,
     logIn: () => {
-      this.setState({ user: "Vova" });
+      this.setState({ user: "Sara" });
     },
     logOut: () => {
       this.setState({ user: null });

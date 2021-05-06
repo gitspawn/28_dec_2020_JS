@@ -10,28 +10,41 @@ const styles = {
   },
 };
 
-export default function SugnupForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const updateEmail = evt => {
-    setEmail(evt.target.value);
-  };
+const SignupForm = () => {
+  // const [state, setFormState] = useState({email: '', password: ''})
+  // const handleChange = (event) => {
+  //   setFormState({email: event.target.value, email: ''})
+  // }
 
-  const updatePassword = evt => {
-    setPassword(evt.target.value);
-  };
+  let [email, setEmail] = useState('')
+  let [password, setPassword] = useState('')
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
-    alert(`${email}, ${password}`);
-  };
+
+  let updateEmail = (e)=>{
+    setEmail(e.target.value)
+  }
+
+  let updatePassword = (e)=>{
+    setPassword(e.target.value)
+  }
+
+
+  let handleSubmit = (event)=>{
+    event.preventDefault();
+    alert(`${email}, ${password}`)
+  }
 
   return (
     <form style={styles.form} onSubmit={handleSubmit}>
       <label style={styles.label}>
         <span>Email</span>
-        <input type="email" name="email" onChange={updateEmail} value={email} />
+        <input
+          type="email"
+          name="email"
+          onChange={updateEmail}
+          value={email}
+        />
       </label>
 
       <label style={styles.label}>
@@ -47,7 +60,11 @@ export default function SugnupForm() {
       <button type="submit">Sign up</button>
     </form>
   );
-}
+};
+
+export default SignupForm
+
+
 
 // export default class SignupForm extends Component {
 //   state = {
