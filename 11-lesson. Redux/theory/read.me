@@ -98,7 +98,6 @@ connect это HOC, он не изменяет переданный ему ко�
 Еще одна полезная функция Redux - возможность делать композицию редьюсеров, то есть совмещать много в один. Это позволяет удобно поддерживать гораздо более сложные состояния в больших приложениях. Для этого используется функция combineReducers().
 
 
-
 import { combineReducers } from 'redux';
 import notesReducer from './notes';
 import filterReducer from './filter';
@@ -109,3 +108,17 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+
+
+Ссылки
+https://redux.js.org/
+https://jaysoo.ca/2016/02/28/organizing-redux-application/
+https://code-cartoons.com/a-cartoon-intro-to-redux-3afb775501a6
+
+Курс по Redux Dan Abramov
+https://egghead.io/courses/fundamentals-of-redux-course-from-dan-abramov-bd5cc867
+https://egghead.io/courses/building-react-applications-with-idiomatic-redux
+
+
+https://medium.com/devschacht/redux-step-by-step-e6c42a9b00cd
+https://trello-attachments.s3.amazonaws.com/59f1a4faa946cdc5b223e904/5b3942f050cf8a07452d6cf4/66ef29154a03d02375d1ffebf6dcb292/react-redux-workflow-graphical-cheat-sheet_v110.png
