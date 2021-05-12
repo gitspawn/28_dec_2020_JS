@@ -1,4 +1,8 @@
 import React from 'react';
+import Select from 'react-select'
+import {connect} from "react-redux"
+import * as timerActions from '../../redux/timerActions.js'
+
 
 
 const options = [
@@ -13,3 +17,13 @@ const StepSelector = ({ value, onChange }) => (
   </div>
 );
 
+const mapStateToProps = state => ({
+    value: state.timer.step
+  })
+
+  const mapDispatchToProps = dispatch => ({
+      onChange: step => dispatch(timerActions.changeStep(step))
+    })
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(StepSelector)

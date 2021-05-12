@@ -1,6 +1,7 @@
 import React from 'react';
-import Timer from './Timer/TimerContainer';
-import StepSelector from './StepSelector/StepSelector';
+import Timer from './Timer/Timer'
+import StepSelector from './StepSelector/StepSelector'
+
 
 const containerStyle = {
   display: 'flex',
@@ -18,3 +19,13 @@ const App = () => (
 );
 
 export default App;
+
+
+
+
+// const state = {
+//   valuee: 5,
+//   notes: [],
+//   aticles: [],
+//   step:{key: 5, value: 5}
+// }
