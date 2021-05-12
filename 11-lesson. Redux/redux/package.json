@@ -41,6 +41,5 @@
     "lint-staged": "^8.1.5",
     "prettier": "^1.17.0",
     "redux-devtools-extension": "^2.13.8"
-  },
-  "homepage": "https://luxplanjay.github.io/react-group-5/"
+  }
 }
