@@ -8,114 +8,118 @@ import articlesApi from "../services/articlesApi";
 // import axios from 'axios'
 
 export default class App extends Component {
-  state = {
-    articles: [],
-    error: false,
-    loading: false,
-    searchQuery: "",
-    page: 0,
-  };
+    state = {
+        articles: [],
+        error: false,
+        loading: false,
+        searchQuery: "",
+        page: 0,
+    };
 
-  // componentDidMount() {
-  // console.log(articlesApi.fetchArticlesWithQuery('react'))
-  // this.setState({loading: true})
-  // axios.get('https://hn.algolia.com/api/v1/search?query=react')
-  //   .then((response) => {
-  //     console.log(response.data.hits)
-  //     return this.setState({
-  //       articles: response.data.hits,
-  //       loading: false
-  //      })
-  //   })
-  // .catch((error) => this.setState({ error }))
-  // .finally(() => this.setState({loading: false}));
-  // }
-
-  componentDidMount() {
+    // componentDidMount() {
+    // console.log(articlesApi.fetchArticlesWithQuery('react'))
     // this.setState({loading: true})
-    // this.fetchArticles('react')
-  }
+    // axios.get('https://hn.algolia.com/api/v1/search?query=react')
+    //   .then((response) => {
+    //     console.log(response.data.hits)
+    //     return this.setState({
+    //       articles: response.data.hits,
+    //       loading: false
+    //      })
+    //   })
+    // .catch((error) => this.setState({ error }))
+    // .finally(() => this.setState({loading: false}));
+    // }
 
-  componentDidUpdate(prevProps, prevState) {
-    // console.log('prevProps', prevProps)
-    // console.log('prevState', prevState)
-
-    let prevQuery = prevState.searchQuery;
-    let nextQuery = this.state.searchQuery;
-
-    if (prevQuery !== nextQuery) {
-      // console.log('Можно обновлять стейт....')
-      this.fetchArticles();
+    componentDidMount() {
+        // this.setState({loading: true})
+        // this.fetchArticles('react')
     }
-  }
 
-  // fetchArticles = (query) =>{
-  //   let {searchQuery} = this.state
+    componentDidUpdate(prevProps, prevState) {
+        // console.log('prevProps', prevProps)
+        // console.log('prevState', prevState)
 
-  //   // console.log('fetchArticles query', query)
-  //   // articlesApi.fetchArticlesWithQuery(query)
-  //   articlesApi.fetchArticlesWithQuery(searchQuery)
-  //   .then((articles) => this.setState({articles}))
-  //   .catch((error) => this.setState({ error }))
-  //   .finally(() => this.setState({loading: false}));
-  // }
+        let prevQuery = prevState.searchQuery;
+        let nextQuery = this.state.searchQuery;
 
-  // Load More Articles
-  // fetchArticles = () =>{
-  //   let {searchQuery,page} = this.state
-  //   articlesApi.fetchArticlesWithQuery(searchQuery, page)
-  //   // .then((articles) => this.setState({articles}))
-  //   .then((articles)=> this.setState((prevState)=>{ return {
-  //     articles,
-  //     page: prevState.page + 1
-  //   }}))
-  //   .catch((error) => this.setState({ error }))
-  //   .finally(() => this.setState({loading: false}));
-  // }
+        if (prevQuery !== nextQuery) {
+            // console.log('Можно обновлять стейт....')
+            this.fetchArticles();
+        }
+    }
 
-  fetchArticles = () => {
-    // State destucturing
-    let { searchQuery, page } = this.state;
-    // Set loder
-    this.setState({ loading: true });
+    // fetchArticles = (query) =>{
+    //   let {searchQuery} = this.state
 
-    articlesApi
-      .fetchArticlesWithQuery(searchQuery, page)
-      .then((articles) =>
-        this.setState((prevState) => {
-          return {
-            articles: [...prevState.articles, ...articles],
-            // articles: [...articles],
-            page: prevState.page + 1,
-          };
-        })
-      )
-      .catch((error) => this.setState({ error }))
-      .finally(() => this.setState({ loading: false }));
-  };
+    //   // console.log('fetchArticles query', query)
+    //   // articlesApi.fetchArticlesWithQuery(query)
+    //   articlesApi.fetchArticlesWithQuery(searchQuery)
+    //   .then((articles) => this.setState({articles}))
+    //   .catch((error) => this.setState({ error }))
+    //   .finally(() => this.setState({loading: false}));
+    // }
 
-  handleSeachFormSubmit = (query) => {
-    this.setState({
-      searchQuery: query,
-      articles: [],
-    });
-  };
+    // Load More Articles
+    // fetchArticles = () =>{
+    //   let {searchQuery,page} = this.state
+    //   articlesApi.fetchArticlesWithQuery(searchQuery, page)
+    //   // .then((articles) => this.setState({articles}))
+    //   .then((articles)=> this.setState((prevState)=>{ return {
+    //     articles,
+    //     page: prevState.page + 1
+    //   }}))
+    //   .catch((error) => this.setState({ error }))
+    //   .finally(() => this.setState({loading: false}));
+    // }
 
-  render() {
-    let { articles, error, loading } = this.state;
-    return (
-      <div>
-        {/* <SearchForm onSubmit={this.fetchArticles}/> */}
-        <SearchForm onSubmit={this.handleSeachFormSubmit} />
-        {error && (
-          <Notification message={`Something went wrong: ${error.message}`} />
-        )}
-        {loading && <Spinner message="Loading..." />}
-        {articles.length > 0 && <ArticleList articles={articles} />}
-        <button type="button" onClick={this.fetchArticles}>
-          Load more
-        </button>
-      </div>
-    );
-  }
+    fetchArticles = () => {
+        // State destucturing
+        let { searchQuery, page } = this.state;
+        // Set loder
+        this.setState({ loading: true });
+
+        articlesApi
+            .fetchArticlesWithQuery(searchQuery, page)
+            .then((articles) =>
+                this.setState((prevState) => {
+                    return {
+                        articles: [...prevState.articles, ...articles],
+                        // articles: [...articles],
+                        page: prevState.page + 1,
+                    };
+                })
+            )
+            .catch((error) => this.setState({ error }))
+            .finally(() => this.setState({ loading: false }));
+    };
+
+    handleSeachFormSubmit = (query) => {
+        this.setState({
+            searchQuery: query,
+            page: 0,
+            articles: [],
+        });
+    };
+
+    render() {
+        let { articles, error, loading } = this.state;
+        return (
+            <div>
+                {/* <SearchForm onSubmit={this.fetchArticles}/> */}
+                <SearchForm onSubmit={this.handleSeachFormSubmit} />
+                {error && (
+                    <Notification
+                        message={`Something went wrong: ${error.message}`}
+                    />
+                )}
+                {loading && <Spinner message="Loading..." />}
+                {articles.length > 0 && <ArticleList articles={articles} /> && (
+                    <button type="button" onClick={this.fetchArticles}>
+                        Load more
+                    </button>
+                )}
+            </div>
+        );
+    }
 }
