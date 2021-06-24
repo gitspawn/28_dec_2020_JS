@@ -102,7 +102,6 @@ export default class SignupForm extends Component {
 
                 {/* <label id='123123'>Email</label>
         <input htmlFor="123123" type="email" value={email} name="email" onChange={this.handleChange} /> */}
-
                 <label>
                     Email
                     <input
@@ -123,6 +122,7 @@ export default class SignupForm extends Component {
                     />
                 </label>
                 <br />
+
                 {/* Radio Button */}
                 <div role="group">
                     <label>
@@ -154,6 +154,7 @@ export default class SignupForm extends Component {
                     </label>
                 </div>
                 <br />
+
                 {/* Select */}
                 <label>
                     Choose our Age
@@ -183,7 +184,7 @@ export default class SignupForm extends Component {
                 </label>
                 <br />
                 <button type="submit" disabled={!agreed}>
-                    Submit!{" "}
+                    Submit as {email}
                 </button>
             </form>
         );
