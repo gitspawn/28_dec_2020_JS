@@ -1,9 +1,8 @@
 // //  Вложенная навигация
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Navigation from '../components/Navigation'
-import tvAPI from '../services/tv-api.js'
-
+import Navigation from "../components/Navigation";
+import tvAPI from "../services/tv-api.js";
 
 // const Shows = ({ match }) => {
 //   const shows = [
@@ -30,51 +29,41 @@ import tvAPI from '../services/tv-api.js'
 //   );
 // };
 
-
-
 class Shows extends Component {
-  state = {
-    shows: []
-  }
+    state = {
+        shows: [],
+    };
 
-  componentDidMount(){
-    tvAPI.fetchShowWithQuery('cat').then((shows) => {
-      return this.setState({shows})
-    })
-  }
+    componentDidMount() {
+        tvAPI.fetchShowWithQuery("cat").then((shows) => {
+            return this.setState({ shows });
+        });
+    }
 
-    render () {
-      let {match} = this.props
-      let {shows} = this.state
+    render() {
+        let { match } = this.props;
+        let { shows } = this.state;
 
-
-      return (
+        return (
             <>
-              <Navigation/>
-              {
-                <ul>
-                  {
-                    shows.map((show) => {
-                      return (
-                        <li key={show.id}>
-                          
-                          <Link to={`${match.url}/${show.id}`}>
-                            {show.name}
-                            {/* <img src={show.image.medium}/> */}
-                            </Link>
-                          </li>
-                      )
-                    })
-                  }
-                </ul>
-              }
+                <Navigation />
+                {shows.length > 0 && (
+                    <ul>
+                        {shows.map((show) => {
+                            return (
+                                <li key={show.id}>
+                                    <Link to={`${match.url}/${show.id}`}>
+                                        {show.name}
+                                        {/* <img src={show.image.medium}/> */}
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                )}
             </>
-          );
+        );
     }
 }
 
-
 export default Shows;
-
-
-
