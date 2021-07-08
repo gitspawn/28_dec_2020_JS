@@ -21,6 +21,9 @@ const News = () => {
     
     return () => {    
       // написать ф-цию отмены http запроса
+      // AbortController
+      // https://developer.mozilla.org/ru/docs/Web/API/AbortController
+      // https://medium.datadriveninvestor.com/aborting-cancelling-requests-with-fetch-or-axios-db2e93825a36
     }
   }, []);
 
