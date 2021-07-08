@@ -26,7 +26,7 @@ let Clock = () => {
       console.log('clear before next useEffect')
       clearInterval(indervalId.current)
     }
-  });
+  }, []);
 
   return (
     <p style={styles.clockface}>
