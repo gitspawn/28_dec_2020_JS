@@ -29,10 +29,15 @@ const mapState = state => ({
   })
 
 
-  const mapDispatch = dispatch => ({
-    onIncrement: step => dispatch(timerActions.increment(step)),
-    onDecrement: step => dispatch(timerActions.decrement(step))
-  })
+  // const mapDispatch = dispatch => ({
+  //   onIncrement: step => dispatch(timerActions.increment(step)),
+  //   onDecrement: step => dispatch(timerActions.decrement(step))
+  // })
+
+  const mapDispatch ={
+    onIncrement: timerActions.increment,
+    onDecrement: timerActions.decrement
+  }
 
 
   // (data)=>console.log(data)
